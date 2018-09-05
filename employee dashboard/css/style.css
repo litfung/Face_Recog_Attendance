@@ -2,7 +2,7 @@
 	font-size: 16px;
 	--project-bg-clr: black;
 	--header-font: "Roboto", sans-serif;
-	--text-font: "Open Sans", sans-serif;
+	--text-font: "Open-sans", sans-serif;
 }
 
 * {
@@ -14,7 +14,11 @@ body {
 	padding: 0;
 	margin: 0;
 	text-align: center;
+	font-size: 17px;
+ 
+	
 }
+
 
 .logo {
 	display: flex;
@@ -27,7 +31,7 @@ body {
     color: #ededed;
 	/*background-color: #ededed;*/
 	background-color: black;
-	border: 5px solid #ededed;
+	border: 5px solid #ff3740;
 	margin-left:10%;
 	margin-right: 10%;
 	margin-top: 5%;
@@ -71,17 +75,47 @@ body {
 
 img.avatar {
 	border-radius: 50%;
-	border :1px solid #ededed;
+	border :3px solid #ff3740;
 	height: auto;
 }
 
+ input {
+  outline: none;
+  z-index: 1;
+  /*position: relative;*/
+  background: none;
+ 
+  height: 20px;
+ border:0;
+  color: #ff3740;
+  font-size: 20px;
+  font-weight: 400;
+  border-bottom: 1px solid grey;
+}
+input:focus ~ label {
+  color: #ff3740 ;
+}
+ input:focus ~ .bar:before, .card .input-container input:focus ~ .bar:after {
+  width: 20%;
+}
 
+.rd
+{
+	  width: 5%;
+}
+.btn:hover
+{
+	background-color: #ff3740;
+	color: white;
+}
 
 .btn {
 	/* background-color: white; */
-	padding: 15px;
+	background-color:white;
+	padding: 14px 30px;
 	margin: 10px;
 	color: black;
+	border-radius: 8px;
 }
 
 .about-text {
