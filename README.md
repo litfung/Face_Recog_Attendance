@@ -1,2 +1,2 @@
-# Face_Recog_Attendance
-A Facial Recognition based Employee Attendance System
+# FRAPPE
+A Facial Recognition Attendance Application for Employee
