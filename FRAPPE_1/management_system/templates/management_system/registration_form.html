@@ -1,0 +1,85 @@
+{% extends 'management_system/admin-base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block title %}Change Password{% endblock %}
+{% block add_active %}active{% endblock %}
+{% block body %}
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="header">
+                  <h4 class="title">Create User for the Employee</h4>
+                  <h4><span class="text-danger small">{{ error_message }}</span></h4>
+                </div>
+                 <div class="content">
+                    <form  action="" method='post' enctype="multipart/form-data">
+                      {% csrf_token %}
+                      {% for field in form %}
+                      {% if field.label_tag == form.username.label_tag %}
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <span class="text-danger small">{{ field.errors }}</span>
+                            <label>Enter {{ field.label_tag }}</label>
+                            {{ field|add_class:'form-control'|attr:'readonly:readonly' }}
+                          </div>
+                        </div>
+                      </div>
+                      {% else %}
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <span class="text-danger small">{{ field.errors }}</span>
+                            <label>Enter {{ field.label_tag }}</label>
+                            {{ field|add_class:'form-control' }}
+                          </div>
+                        </div>
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                      <button type="submit" class="btn btn-info btn-fill pull-right">Submit</button>
+                      <div class="clearfix"></div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+{% endblock %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Create a New Account</h3>
+          {% if error_message %}
+                <p><strong>{{ error_message }}</strong></p>
+          {% endif %}
+          <form class='form-horizontal' action="" method='post' enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <span class="text-danger small">{{ field.errors }}</span>
+              </div>
+              <label class="control-label col-sm-2">{{ field.label_tag }}</label>
+              <div class="col-sm-10">{{ field }}</div>
+            </div>
+          {% endfor %}
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" name="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>">
+
+    </div>
+  </div>
+</div>

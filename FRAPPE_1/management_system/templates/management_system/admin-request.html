@@ -1,0 +1,86 @@
+{% extends 'management_system/admin-base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block title %}Request Confirmation {% endblock %}
+{% block request_active %}active{% endblock %}
+{% block body %}
+<div class="content">
+  <div class="container-fluid">
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+    {% for alert in alerts %}
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="header">
+            <h3 class="title">Unidentified Individual!</h3>
+          </div>
+          <div class="content">
+              <div class="row">
+                <div class="col-md-6 col-xs-6">
+                  <div class="form-group">
+                    <label><h6>Employee ID</h6></label>
+                  </div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group">
+                            <label><h6>{{ alert.emp.emp_id }}</h6></label>
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-xs-6">
+                  <div class="form-group">
+                    <label><h6>Employee Name:</h6></label>
+                  </div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                  <div class="form-group">
+                    <label><h6>{{ alert.emp.first_name }} {{ alert.emp.last_name }}</h6></label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-xs-6">
+                  <div class="form-group">
+                    <label><h6>Time:</h6></label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label><h6>{{ alert.time }}</h6></label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-xs-6">
+                  <div class="form-group">
+                    <label><h6>Date:</h6></label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label><h6>{{ alert.date }}</h6></label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-xs-6">
+                  <button type="submit" name="acc{{forloop.counter0}}" value="Save" class="btn btn-info btn-fill pull-right">Access confirmed</button>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                  <button type="submit" name="del{{forloop.counter0}}" value="Delete" class="btn btn-danger btn-fill pull-right">Access denied</button>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

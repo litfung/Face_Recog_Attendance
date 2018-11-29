@@ -1,0 +1,115 @@
+{% extends 'management_system/emp-base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block title %}Update Details: {{ employee.first_name }}{% endblock %}
+{% block update_active %}active{% endblock %}
+{% block sidebar %}
+{% if employee.has_admin_acc %}
+<li>
+  <a href="{% url 'management_system:admin-detail' %}">
+    <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>&nbsp;
+    Switch to Admin
+  </a>
+</li>
+{% endif %}
+{% endblock %}
+{% block body %}
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Edit Profile</h4>
+          </div>
+          <div class="content">
+            <form action="" method='post' enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Employee ID</label>
+                    <div class="form-control">{{ employee.emp_id }}</div>
+                  </div>
+                </div>
+              {% for field in form %}
+              {% if field.label_tag == form.phone.label_tag %}
+              <div class="col-md-4">
+              {% endif %}
+              {% if field.label_tag == form.email.label_tag %}
+              <div class="col-md-4">
+              {% endif %}
+              {% if field.label_tag == form.first_name.label_tag %}
+              </div>
+              <div class="row">
+              <div class="col-md-6">
+              {% endif %}
+              {% if field.label_tag == form.last_name.label_tag %}
+              <div class="col-md-6">
+              {% endif %}
+              {% if field.label_tag == form.address.label_tag %}
+              </div>
+              <div class="row">
+              <div class="col-md-12">
+              {% endif %}
+              {% if field.label_tag == form.city.label_tag %}
+              </div>
+              <div class="row">
+              <div class="col-md-4">
+              {% endif %}
+              {% if field.label_tag == form.zip_code.label_tag %}
+              <div class="col-md-4">
+              {% endif %}
+              {% if field.label_tag == form.country.label_tag %}
+              <div class="col-md-4">
+              {% endif %}
+              {% if field.label_tag == form.profile_pic.label_tag %}
+              </div>
+              <div class="row">
+              <div class="col-md-4">
+              {% endif %}
+                  <div class="form-group">
+                    <label>{{ field.label_tag }}</label>
+                  {{ field|add_class:"form-control" }}
+                </div>
+              </div>
+              {% endfor %}
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                  <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-user">
+          <div class="image">
+            <img src="{% static 'management_system/images/profile.jpg' %}" alt="..."/>
+              <h4 class="title">Welcome {{ employee.first_name }}</h4>
+          </div>
+          <div class="content">
+            <div class="author">
+              <a href="#">
+                <img class="avatar border-gray" src="{{ employee.profile_pic.url }}" alt="..."/>
+                <h4 class="title">Employee Details: </h4>
+              </a>
+            </div>
+            <p class="description text-center"><br>Name: {{ employee.first_name }} {{ employee.last_name }} </p>
+            <p class="description text-center">Mobile Number: {{ employee.phone }} </p>
+            <p class="description text-center">Employee ID: {{ employee.emp_id }} </p>
+            <p class="description text-center">Email: {{ employee.email }} </p>
+            <p class="description text-center">Address: {{ employee.address }} </p>
+            <p class="description text-center">City: {{ employee.city }} </p>
+            <p class="description text-center">Country: {{ employee.country }} </p>
+            <p class="description text-center">Pincode: {{ employee.zip_code }} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <title>FRAPPE</title>
+    <link href="{% static 'attendance_system/images/favicon.ico' %}" rel="icon" type="image/x-icon">
+    <link href="{% static 'attendance_system/css/master.css' %}" rel="stylesheet" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="screenshot">
+      <div id="video-boxes">
+        <div id="live-video-box">
+          <video autoplay id="live-video"></video>
+        </div>
+        <div id="capture-video-box">
+          <img src="{% static 'attendance_system/images/capture.png' %}" id="capture-video">
+        </div>
+      </div>
+      <div id="some-buttons">
+        <button class="capture-button">Turn Camera On</button>
+        <button id="screenshot-button" disabled>Capture</button>
+      </div>
+      <div id="all-buttons">
+
+        <div id="dl-btn-box">
+          <a id="dl-btn" href="#" download="photo.png">Save Photo</a>
+        </div>
+
+        <form id="form-id" method="post" action="" onsubmit="prepareImg();" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input id="inp_img" name="inp_img" type="hidden" value="">
+          <input id="bt_upload" type="submit" value="Upload">
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="{% static 'attendance_system/js/scripts.js' %}" type="text/javascript"></script>
+</html>
